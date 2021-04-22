@@ -7,7 +7,7 @@ services:
       dockerfile: ./Dockerfile
     image: api
     ports:
-      - '8080:8080'
+      - '80:80'
       - '5005:5005'
     environment:
       - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xmx1G -Xms128M -XX:MaxMetaspaceSize=128M
@@ -18,7 +18,7 @@ services:
   db:
     image: mysql:8.0.23
     ports:
-      - '3307:3306'
+      - '3306:3306'
     environment:
       - MYSQL_ROOT_HOST=%
       - MYSQL_DATABASE=testdatabase

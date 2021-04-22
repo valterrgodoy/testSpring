@@ -13,6 +13,6 @@ COPY /target/testSpring*.jar testSpring.jar
 SHELL ["/bin/sh", "-c"]
 
 EXPOSE 5005
-EXPOSE 8080
+EXPOSE 80
 
 cmd java ${ADDITIONAL_OPTS} -jar testSpring.jar --spring.profiles.active=${PROFILE}
