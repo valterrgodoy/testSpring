@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  testSpring:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    image: api
+    ports:
+      - '8080:8080'
+      - '5005:5005'
+    environment:
+      - ADDITIONAL_OPTS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Xmx1G -Xms128M -XX:MaxMetaspaceSize=128M
+      - PROFILE=dev
+    links:
+      - db
+
+  db:
+    image: mysql:8.0.23
+    ports:
+      - '3307:3306'
+    environment:
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_DATABASE=testdatabase
+      - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=valtergodoy
+    volumes:
+      - ./docker/volume_testSpring:/var/lib/mysql
