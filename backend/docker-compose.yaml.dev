@@ -1,8 +1,8 @@
 version: "2.4"
 x-database-variables: &database-variables
-  SPRING_DATASOURCE_URL: jdbc:mariadb://35.192.148.137:3306/testdatabase?createDatabaseIfNotExist=true
+  SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/testdatabase?createDatabaseIfNotExist=true
   SPRING_DATASOURCE_USERNAME: root
-  SPRING_DATASOURCE_PASSWORD: MfXQZxPHr24t87Bwgw449ZNiY6ckPL4Z
+  SPRING_DATASOURCE_PASSWORD: valtergodoy
 services:
   db:
     image: mysql:8.0.23
@@ -23,6 +23,7 @@ services:
     - "8080:8080"
     environment:
       <<: *database-variables
+
 
 volumes:
   mysql_data:

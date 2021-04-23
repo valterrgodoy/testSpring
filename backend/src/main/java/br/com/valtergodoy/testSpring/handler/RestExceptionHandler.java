@@ -56,7 +56,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleExceptionInternal(
             Exception ex, @Nullable Object body, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        var exceptionDetail = ExceptionDetail.builder()
+        ExceptionDetail exceptionDetail = ExceptionDetail.builder()
                 .timestamp(LocalDateTime.now())
                 .status(status.value())
                 .title(ex.getCause().getMessage())
